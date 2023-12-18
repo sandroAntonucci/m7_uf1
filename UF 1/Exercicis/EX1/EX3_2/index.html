@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 1 - Teclado númerico</title>
+    <style>
+        .botonNumero{
+            background-color: lightblue;
+            font-size: 30px;
+            color: white;
+            height: 100px;
+            width: 100px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1 id="titulo">Ejercicio 1 - Teclado númerico</h1>
+    
+    <div id="contenedor">
+            <!-- Aquí es dónde ira el teclado. -->
+    </div>
+   
+
+    <script>
+
+        let numeroFinal = "";
+        let numActual = 1; 
+        let miDiv = document.getElementById('contenedor'); 
+        let numMax;
+
+        do{
+        
+            numMax = prompt("Introduce cuantos números quieres tener (no mas de 30): ");
+        
+        }while(numMax > 30);
+
+        let numColumn = prompt("Introduce el número de columnas: ");
+
+        for (let i = 1; i<=numMax; i++) {
+
+            let textoBoton = document.createTextNode(i);
+            let boton = document.createElement('button');
+            boton.className="botonNumero";
+
+            if(i % 2 == 0){
+
+                boton.style.backgroundColor="blue";
+
+            }else if(i % 3 == 0){
+            
+                boton.style.backgroundColor="yellow";
+
+            }
+
+
+            boton.appendChild(textoBoton);
+            miDiv.appendChild(boton);
+            
+            boton.setAttribute("value", numActual);
+
+            boton.addEventListener("click", function() {
+                
+                numeroFinal += boton.value;
+                console.log(numeroFinal);
+
+            });
+        }
+
+
+        contenedor.style.display="flex";
+        contenedor.style.flexWrap="wrap";
+        contenedor.style.width = (numColumn*121) + "px";
+
+        
+
+    </script>
+ </body>
+</html>

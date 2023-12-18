@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+
+  <body onload="init()">
+    <script>
+        //funcion principal
+        function init() {
+
+            console.log(MultiplicateByThreeNumbers(2, 3, 4));
+            console.log(MultiplicateByThreeNumbers(2, 0, 3));
+            console.log(MultiplicateByThreeNumbers(0, 0, 0));
+
+        }
+
+        function Multiplicate(num, multiplicator) {
+            let result = 0;
+            for(let i = 0; i < multiplicator; i++) {
+                result += num;
+            }
+            return result;
+        }
+
+        function MultiplicateByThreeNumbers(firstNum, secondNum, thirdNum){
+            return Multiplicate(Multiplicate(firstNum, secondNum), thirdNum);
+        }
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ejercicio 1 - Teclado númerico</title>
+  </head>
+  <style>
+    .patata{
+        display: flex;
+        padding: 50px;
+        margin: 50px;
+    }
+  </style>
+
+  <body onload="init()">
+
+    <h1 id="titulo">Ejercicio - Teclado AlfaNumerico</h1>
+    <div id="contenedor" class="patata">
+    <!-- Aquí es dónde ira el teclado. -->
+
+    </div>
+
+    <script>
+        //funcion principal
+        function init() {
+
+            let miDiv = document.getElementById('contenedor');
+            let DivTecladoNumerico = document.createElement('div');
+            let DivTecladoAlfabetico = document.createElement('div');
+
+            DivTecladoNumerico = CrearTeclado(DivTecladoNumerico);
+
+            DivTecladoAlfabetico = CrearTecladoAlfa(DivTecladoAlfabetico);
+
+            miDiv.appendChild(DivTecladoNumerico);
+            miDiv.appendChild(DivTecladoAlfabetico);
+        }
+
+        function CrearTecladoAlfa(teclado) {
+
+            for (let i = 65; i <= 90; i++) {
+                let letra = String.fromCharCode(i)
+
+                let tecla = document.createElement('button');
+                let teclaTexto = document.createTextNode(letra);
+                tecla.appendChild(teclaTexto); 
+
+                //estilo del teclado
+                tecla.style.width = "100PX"
+                tecla.style.height = "100PX"
+                tecla.style.color = "black"
+                tecla.style.background_color = "blue"
+                tecla.style.borderRadius = "10px"
+                tecla.style.margin = "10px"
+                tecla.style.padding = "10px"
+
+                //agregar al div 
+                teclado.appendChild(tecla);
+
+                switch(i){
+                    case 65:
+                        tecla.style.background=i%2==0?"#66ccff":"#76eec6"
+                        break;
+                    case 69:
+                        tecla.style.background=i%2==0?"#66ccff":"#76eec6"
+                        break;
+                    case 73:
+                        tecla.style.background=i%2==0?"#66ccff":"#76eec6"
+                        break;
+                    case 79:
+                        tecla.style.background=i%2==0?"#66ccff":"#76eec6"
+                        break;
+                    case 85:
+                        tecla.style.background=i%2==0?"#66ccff":"#76eec6"
+                        break;
+
+
+                }
+
+            } 
+            return teclado;
+
+        }
+
+        function CrearTeclado(teclado) {
+
+            for (let i = 1; i <= 10; i++) {
+                let teclaTexto;
+                let tecla = document.createElement('button');
+                if (i == 10) {
+                    teclaTexto = document.createTextNode('0');
+                }
+                else{
+                    teclaTexto = document.createTextNode(i);
+                }
+                tecla.appendChild(teclaTexto); 
+                
+                //estilo del teclado
+                tecla.style.width = "100PX"
+                tecla.style.height = "100PX"
+                tecla.style.color = "black"
+                tecla.style.borderRadius = "10px"
+                tecla.style.margin = "10px"
+                tecla.style.padding = "10px"
+                
+                //agregar al div 
+                teclado.appendChild(tecla);
+
+                if(i%3==0){
+                    tecla.style.background=i%2==0?"#66ccff":"#76eec6"
+                }else{
+                    tecla.style.background = i % 2 == 0 ? "#66ccff" : "#e5a3ad";
+                }
+
+            } 
+            return teclado;
+        }
+
+      
+
+    </script>
+  </body>
+</html>

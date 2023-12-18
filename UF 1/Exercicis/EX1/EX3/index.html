@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 1 - Teclado númerico</title>
+    <style>
+        .botonNumero{
+            background-color: lightblue;
+            font-size: 30px;
+            color: white;
+            height: 100px;
+            width: 100px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1 id="titulo">Ejercicio 1 - Teclado númerico</h1>
+    
+    <div id="contenedor">
+            <!-- Aquí es dónde ira el teclado. -->
+    </div>
+   
+    <script>
+        let miDiv = document.getElementById('contenedor');
+
+        
+        let primeraFila = document.createElement('div');   
+        let segundaFila = document.createElement('div');
+        let terceraFila = document.createElement('div');
+        
+
+        let primerBoton = document.createElement('button');
+        let textoPrimerBoton = document.createTextNode('1');
+        primerBoton.appendChild(textoPrimerBoton);
+        primerBoton.className="botonNumero";
+        
+        let segundoBoton = document.createElement('button');
+        let textoSegundoBoton = document.createTextNode('2');
+        segundoBoton.appendChild(textoSegundoBoton);
+        segundoBoton.className="botonNumero";
+
+        let tercerBoton = document.createElement('button');
+        let textoTercerBoton = document.createTextNode('3');
+        tercerBoton.appendChild(textoTercerBoton);
+        tercerBoton.className="botonNumero";
+
+
+        let cuartoBoton = document.createElement('button');
+        let textoCuartoBoton = document.createTextNode('4');
+        cuartoBoton.appendChild(textoCuartoBoton);
+        cuartoBoton.className="botonNumero";
+
+        let quintoBoton = document.createElement('button');
+        let textoQuintoBoton = document.createTextNode('5');
+        quintoBoton.appendChild(textoQuintoBoton);
+        quintoBoton.className="botonNumero";
+
+
+        let sextoBoton = document.createElement('button');
+        let textoSextoBoton = document.createTextNode('6');
+        sextoBoton.appendChild(textoSextoBoton);
+        sextoBoton.className="botonNumero";
+
+        let septimoBoton = document.createElement('button');
+        let textoSeptimoBoton = document.createTextNode('7');
+        septimoBoton.appendChild(textoSeptimoBoton);
+        septimoBoton.className="botonNumero";
+
+
+        let octavoBoton = document.createElement('button');
+        let textoOctavoBoton = document.createTextNode('8');
+        octavoBoton.appendChild(textoOctavoBoton);
+        octavoBoton.className="botonNumero";
+
+        let novenoBoton = document.createElement('button');
+        let textoNovenoBoton = document.createTextNode('9');
+        novenoBoton.appendChild(textoNovenoBoton);
+        novenoBoton.className="botonNumero";
+
+        primeraFila.appendChild(primerBoton);
+        primeraFila.appendChild(segundoBoton);
+        primeraFila.appendChild(tercerBoton);
+
+        segundaFila.appendChild(cuartoBoton);
+        segundaFila.appendChild(quintoBoton);
+        segundaFila.appendChild(sextoBoton);
+
+        terceraFila.appendChild(septimoBoton);
+        terceraFila.appendChild(octavoBoton);
+        terceraFila.appendChild(novenoBoton);
+
+        miDiv.appendChild(primeraFila);
+        miDiv.appendChild(segundaFila);
+        miDiv.appendChild(terceraFila);
+        
+
+
+    </script>
+ </body>
+</html>

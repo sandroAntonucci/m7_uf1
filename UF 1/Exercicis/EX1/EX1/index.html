@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Mi primera prueba en JS</title>
+
+</head>
+<body>
+    <h1>Patata Patatera </h1>
+
+
+    <script>
+        //codigo JS
+        console.log("Hello World");
+        console.warn("Esto es un warning");
+        console.error("Esto es un error");
+        alert("Patata caliente");
+
+        let bConteta = confirm("estas contenta");
+        console.log("el usuario esta contento " + bConteta); 
+    
+        let nombre = prompt("como te llamas");
+        console.log(nombre + " esta contento");
+
+    </script>
+
+
+    <h1 id="titulo"> hello </h1>
+
+    <script>
+
+        let title = document.getElementById('titulo');
+        console.log(title.textContent);
+
+        let PreuRosa = 8;
+        let QuantitatRosa = 70;
+        let ValorRosa = 560;
+        console.log('rosa: Preu unitari:' + PreuRosa + ',quantitat:' + QuantitatRosa + ',valor:' + ValorRosa)
+
+        let Preulliri = 10;
+        let Quantitatlliri = 50;
+        let Valorlliri = 500;
+        console.log('Lliri: preu unitari: ' + Preulliri + ',quantitat:' + Quantitatlliri + ',valor:' + Valorlliri)
+
+        let Preutulipa = 2;
+        let Quantitattulipa = 120;
+        let Valortulipa = 240;
+        console.log('Tulipa: preu unitari:' + Preutulipa + ',quantitat:' + Quantitattulipa + ',valor:' + Valortulipa)
+        console.log('total:' + (PreuRosa + QuantitatRosa + ValorRosa + Preulliri + Quantitatlliri + Valorlliri + Preutulipa + Quantitattulipa + Valortulipa));
+        
+    </script>
+</body>
+</html>

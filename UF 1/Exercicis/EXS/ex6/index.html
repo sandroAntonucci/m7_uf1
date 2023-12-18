@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+
+  <body onload="init()">
+    <script>
+        //funcion principal
+        function init() {
+
+            console.log(CubeOfNum(2));
+            console.log(CubeOfNum("Hola"));
+
+        }
+
+        function CubeOfNum(num) {
+
+            if(isNaN(num)){
+                alert("Esto no es un número");
+                return 0;
+            }
+
+            return num*num*num;
+        }
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+
+  <body onload="init()">
+    <script>
+        //funcion principal
+        function init() {
+
+            let num = parseInt(prompt("Introduce un número: "));
+            let multiplicator = parseInt(prompt("Introduce el número por el que lo quieres multiplicar: "));
+            
+            console.log("El resultado es "+ Multiplicate(num, multiplicator));
+
+        }
+
+        function Multiplicate(num, multiplicator) {
+            let result = 0;
+            for(let i = 0; i < multiplicator; i++) {
+                result += num;
+            }
+            return result;
+        }
+
+    </script>
+  </body>
+</html>

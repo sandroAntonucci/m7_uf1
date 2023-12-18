@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+
+  <body onload="init()">
+    <script>
+        //funcion principal
+        function init() {
+
+            for(let i = 1; i < 10000; i++){
+
+                if(CheckProperty(i)){
+                    console.log(i);
+                }
+                
+            }
+
+        }
+
+        function CheckProperty(num){
+
+            let sum = 0;
+            let copyNum = num;
+
+            while(parseInt(copyNum) > 0){
+                let module = parseInt(copyNum) % 10;
+                sum += module * module * module;
+                copyNum /= 10;
+            }
+
+            if(sum == num){
+                return true;
+            }
+
+            return false;
+        }
+
+
+    </script>
+  </body>
+</html>

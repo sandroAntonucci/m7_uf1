@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+
+  <body onload="init()">
+    <script>
+        //funcion principal
+        function init() {
+
+            console.log(Average(2, 3, 4));
+            console.log(Average(2, 0, 3));
+            console.log(Average(0, 0, 0));
+
+        }
+
+        function Average(gradeOne, gradeTwo, gradeThree) {
+            return ((gradeOne + gradeTwo + gradeThree) / 3).toFixed(1);
+        }
+
+    </script>
+  </body>
+</html>
