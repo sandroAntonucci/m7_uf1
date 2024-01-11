@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <style>
+    .patata{
+        display: flex;
+        padding: 50px;
+        margin: 50px;
+    }
+  </style>
+
+  <body onload="init()">
+
+    <script>
+        
+        //funcion principal
+        function init() {
+
+            alert(startsWithAs())
+            console.log(startsWithAs("Astroworld"));
+            console.log(startsWithAs("tronomia"));
+
+            console.log(deleteCharInPosition("hola", ));
+        }
+
+        function startsWithAs(text){
+
+            if((text.toLowerCase()).startsWith("as")){
+                return text;
+            }else{
+                return "As" + text;
+            }
+        }
+
+        function deleteCharInPosition(text, position){
+            if(position + 1 > text.length){
+                return text;
+            }else{
+                text = text.slice(position);
+                return text;
+            }
+        }
+
+        function swapFirstAndLastChar(text){
+
+            if (moreThanZeroChars(text)){
+
+                return text[0] + text.Substring(1, text.length - 1) + text[text.length - 1];
+
+            }
+
+        }
+
+        function moreThanZeroChars(text){
+            return text.length > 0;
+        }
+
+
+    </script>
+  </body>
+</html>

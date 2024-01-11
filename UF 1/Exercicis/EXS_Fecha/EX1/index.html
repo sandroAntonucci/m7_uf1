@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+
+  <body onload="init()">
+
+    <script>
+        
+        //funcion principal
+        function init() {
+
+            logsCurrentDate();
+            console.log(checkIsCurrentClassM4());
+            timeUntilBirthday();
+        }
+
+
+        function logsCurrentDate(){
+            let date = new Date();
+            console.log(date);
+        }
+
+        function checkIsCurrentClassM4(){
+
+            let date = new Date();
+
+            if(
+                (date.getDay() == 3 && (date.getHours() == 9 || date.getHours() == 10)) || 
+                (date.getDay() == 4 && (date.getHours() == 12 || date.getHours() == 13)) || 
+                (date.getDay() == 5 && (date.getHours() == 9 || date.getHours() == 10 || date.getHours() == 11))){
+
+                return true;
+
+            }
+
+            return false;
+
+        }
+
+        function timeUntilBirthday(){
+
+            let currentDate = new Date();
+            let birthday = new Date(2024, 2, 20);
+            let timeLeft = birthday.getTime() - currentDate.getTime();
+
+            console.log(timeLeft);
+
+        }
+
+    </script>
+  </body>
+</html>

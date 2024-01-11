@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ejercicio 1 - Teclado númerico</title>
+  </head>
+  <style>
+    .patata{
+        display: flex;
+        padding: 50px;
+        margin: 50px;
+    }
+  </style>
+
+  <body onload="init()">
+
+    <h1 id="titulo">Ejercicio 3 - Dados</h1>
+    <div id="contenedor" class="patata">
+    <!-- Aquí es dónde ira el teclado. -->
+
+    </div>
+
+    <script>
+
+        
+        var sumBlue = 0;
+        var sumRed = 0;
+        
+
+        //funcion principal
+        function init() {
+
+            let myDiv = document.getElementById('contenedor');
+            
+            let DivRandomNumBlue = document.createElement('div');
+            let DivRandomNumRed = document.createElement('div');
+            let H2Answer = document.createElement('h2');
+
+            let answer;
+
+            let colorBlue = "lightblue";
+            let colorRed = "red";
+
+
+            DivRandomNumBlue = createNum(DivRandomNumBlue, colorBlue);
+            
+            DivRandomNumRed = createNum(DivRandomNumRed, colorRed);
+            
+            if(sumBlue > sumRed){
+                answer = "El jugador 1 ha ganado";
+            }else{
+                answer = "El jugador 2 ha ganado";
+            }
+
+            let WhichIsGreater = document.createTextNode(answer);
+            H2Answer.appendChild(WhichIsGreater);
+
+            myDiv.appendChild(DivRandomNumBlue);
+            myDiv.appendChild(DivRandomNumRed);
+            myDiv.appendChild(H2Answer);
+        }
+
+        function createNum(dices, color){
+
+            for(let i = 0; i < 2; i++){
+                let randomNum = getRandomInt(1, 7);
+                
+                
+                if(color == "lightblue") sumBlue += randomNum;
+                else sumRed += randomNum;
+                
+                let dice = document.createElement('button');
+                let diceNum = document.createTextNode(randomNum);
+                
+                //estilo del dado
+                dice.style.width = "100PX";
+                dice.style.height = "100PX";
+                dice.style.color = "black";
+                dice.style.backgroundColor = color;
+                dice.style.borderRadius = "10px";
+                dice.style.margin = "10px";
+                dice.style.padding = "10px";
+
+                dice.appendChild(diceNum);
+
+                dices.appendChild(dice);
+            }
+            
+            
+            return dices;
+
+        }
+
+        function getRandomInt(min, max){
+            return Math.floor(Math.random() * (max - min) + min);
+        }
+      
+
+    </script>
+  </body>
+</html>

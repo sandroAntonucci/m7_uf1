@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <style>
+    .patata{
+        display: flex;
+        padding: 50px;
+        margin: 50px;
+    }
+  </style>
+
+  <body onload="init()">
+
+    <script>
+        
+        //funcion principal
+        function init() {
+
+            let word = prompt("Introduce una palabra: ");
+
+            divideVocalsAndConsonants(word)
+
+        }
+
+        // Función que separa las consoantes de las vocales de una palabra recibida y las imprime por consola sin devolver nada
+
+        function divideVocalsAndConsonants(word){
+
+            let vocals = "aeiou";
+            let wordConsonants = "", wordVocals = "";
+
+            for(const letter of word){
+                if(vocals.includes(letter)) wordVocals += letter;
+                else wordConsonants += letter;
+            }
+            
+            console.log("Paraula amb només consonants: " + wordConsonants);
+            console.log("Paraula amb només vocals: " + wordVocals);
+        }
+
+    </script>
+  </body>
+</html>
