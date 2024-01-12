@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+
+  <body onload="init()">
+
+    <script>
+        
+        //funcion principal
+        function init() {
+
+            console.log(sumsEven([1, 2, 3, 4]));
+
+            console.log(sortStudentData(["Rodriguez", "8", 9, '5',4, 'Clara']));
+        
+            console.log(deleteWordsThatStartWithZ(["Bob", "Alex", "Zoello"]));
+        
+            console.log(bubbleSort([4, 3, 1, 5]));
+
+            console.log(funcSplice(["Enero", "Febrero", "Marzo", "Abril", "Mayo"], 2, 1));
+            console.log(funcSpliceDelete(["Enero", "Febrero", "Marzo", "Abril", "Mayo"], 1, 2, "hola"));
+
+            /*
+            console.log(deleteWords(["Bob", "Alex", "Zoello"]))
+            */
+        }
+
+
+        function sumsEven(nums){
+            
+            let sum = 0;
+
+            for(let i = 0; i < nums.length; i++){
+                if(nums[i] % 2 == 0) sum += nums[i];
+            }
+
+            return sum;
+        }
+
+        function sortStudentData(data){
+
+            let name = data.pop();
+            data.unshift(name);
+            let average = 0;
+
+            for(let i = 2; i < data.length; i++){
+
+                average += parseFloat(data[i]);        
+        
+            }
+
+            average /= 4;
+
+            data.push(average);
+
+            return data;
+
+        }
+
+        function deleteWordsThatStartWithZ(words){
+
+            let newWords = new Array();
+
+            for(let i = 0; i < words.length; i++){
+
+                if(!(words[i].toLowerCase()).startsWith("z")) newWords.push(words[i]); 
+
+            }
+
+            return newWords;
+        }
+        /*
+        function deleteWords(words){
+
+            for(let i = 0; i < words.length; i++){
+
+                if(!(words[i].toLowerCase()).startsWith("z")) words = funcSplice(words, i, 1); 
+
+            }  
+
+            return words;
+        }
+        */
+
+        function bubbleSort(arr){
+
+            let sortedArr = arr;
+
+            for(let i = 0; i < sortedArr.length-1; i++){
+                for(let j = i+1; j < sortedArr.length; j++){
+
+                    if(sortedArr[j] > sortedArr[i]){
+
+                        let aux = sortedArr[i];
+
+                        sortedArr[i] = sortedArr[j];
+
+                        sortedArr[j] = aux;
+
+                    }
+
+                }
+            }
+
+            return sortedArr;
+
+        }
+
+        function funcSplice(arr, startPosition, elementsToDelete){
+
+            let newArr = new Array();          
+
+            for(let i = 0; i < arr.length; i++){
+                
+                if(i == startPosition) i += elementsToDelete;
+                
+                newArr.push(arr[i]);
+
+            }
+
+            return newArr;
+
+        }
+
+        function funcSpliceDelete(arr, startPosition, elementsToChange, replace){
+            let newArr = new Array();
+            let positionsToReplace = startPosition + elementsToChange
+            
+
+            for(let i = 0; i < arr.length; i++){
+                
+                if(i == startPosition) {
+                    
+                    while(elementsToChange >= 0){
+                        newArr.push(replace);
+                        elementsToChange--;
+                    }
+                    
+                
+                }
+                else newArr.push(arr[i]);   
+               
+
+            }
+
+            return newArr;
+        }
+
+
+
+
+    </script>
+  </body>
+</html>
