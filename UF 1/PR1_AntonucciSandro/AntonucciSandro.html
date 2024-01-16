@@ -13,18 +13,22 @@
 
     <div class="container">
         <h2>Comprobador de contraseña</h2>
-        <form action="#" method="post">
+        <form>
             <label for="password">Contraseña:</label>
             <input type="password" id="password" name="password" required>
             
             <br><br><br>
             <input type="checkbox" id="showPassword" onchange="togglePassword()">
             <label for="showPassword" id="labelShowPassword">Mostrar contraseña</label>
-            
-
-            <button type="submit">Enviar</button>
         </form>
+
+        <div id="showErrors"> 
+            
+        </div>
+
+        <button id="send">Enviar</button>
     </div>
+
 
 </body>
 
