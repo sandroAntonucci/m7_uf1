@@ -17,6 +17,25 @@ body {
     width: 350px;
 }
 
+.errorMessage{
+
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    color: #fff;
+    background-color: #dc3545;
+
+}
+
+.successMessage{
+
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    color: #28a745;
+    background-color: #d4edda;
+
+}
 
 
 label {

@@ -1,213 +1,164 @@
-// La función init detecta cuando se ha apretado el botón para comprobar que la contraseña sea correcta
+// MENSAJES AL USUARIO
+const MSG_LENGTH_ERROR = 'La contraseña tiene que tener entre 8 y 20 carácteres.';
+const MSG_UPPER_LETTERS_ERROR = 'La contraseña tiene que tener al menos una mayúscula.';
+const MSG_LOWER_LETTERS_ERROR = 'La contraseña tiene que tener al menos dos minúsculas.';
+const MSG_DIGITS_ERROR = 'La contraseña tiene que tener al menos un dígito.';
+const MSG_THREE_CONSECUTIVE_CHARS_ERROR = 'La contraseña no puede tener tres o más carácteres iguales seguidos';
+const MSG_BLANK_SPACES_ERROR = 'La contraseña no puede tener espacios en blanco';
+const MSG_SPECIAL_CHARS_ERROR = 'La contraseña tiene que tener al menos un carácter especial';
+const MSG_SUCCESS = 'La contraseña es válida';
 
+const UPPER_LETTERS = 'ABCDEFGHIJKLMNÑOPQRSTUVWXYZ';
+const LOWER_LETTERS = 'abcdefghijklmnñopqrstuvwxyz';
+const STRING_DIGITS = '0123456789'
+
+const MIN_CHARS = 8, MAX_CHARS = 20, MIN_UPPER_LETTERS = 1, MIN_LOWER_LETTERS = 2, MIN_DIGITS = 1, MIN_SPECIAL_CHARS = 1;
+
+// La función init detecta cuando se ha apretado el botón para comprobar que la contraseña sea correcta
 function init(){
     let button = document.getElementById("send");
-    button.addEventListener("click", checkPasswordErrors)
+    button.addEventListener("click", checkPasswordErrors);
 }
 
-// Se encarga de detectar si la contraseña tiene algún error
-
+// Detecta si la contraseña tiene algún error e informa al usuario
 function checkPasswordErrors(){
 
-    // Esta variable se usa para detectar si ha habido algún error, si no, se muestra el mensaje de que la contraseña es correcta
     let passwordHasErrors = false;
-
-    // Recoge la contraseña introducida por el usuario
     let password = document.getElementById("password").value;
+    let showMessages = document.getElementById("showMessages");
+    showMessages.innerHTML = '';
 
-    // Borra errores mostrados anteriormente
-    let showErrors = document.getElementById("showErrors");
-    showErrors.innerHTML = '';
 
-    
+    // -- COMPROBACIÓN DE ERRORES --
 
-    if(!(checkLength(password.length))){
-
-        // Muestra que la contraseña no tiene entre 8 y 20 car.
-        let passwordMessage = document.createElement('p');
-        let errorText = document.createTextNode('La contraseña tiene que tener entre 8 y 20 carácteres.');
-        
-        passwordMessage.style.color = '#fff';
-        passwordMessage.style.backgroundColor = '#dc3545';
-        passwordMessage.style.padding = '10px';
-        passwordMessage.style.borderRadius = '5px';
-        passwordMessage.style.marginBottom = '10px';
-
-        passwordMessage.appendChild(errorText);
-        showErrors.appendChild(passwordMessage);
-
+    // Comprueba que tenga entre 8 y 20 charácteres
+    if(!checkLength(password.length)){
         passwordHasErrors = true;
+        showTextMessage(MSG_LENGTH_ERROR, passwordHasErrors);
     }
 
-    if(quantUpperLetters(password) < 1){
-
-
-        // Muestra que la contraseña no tiene mayúsculas
-        let passwordMessage = document.createElement('p');
-        let errorText = document.createTextNode('La contraseña tiene que tener al menos una mayúscula.');
-        
-        passwordMessage.style.color = '#fff';
-        passwordMessage.style.backgroundColor = '#dc3545';
-        passwordMessage.style.padding = '10px';
-        passwordMessage.style.borderRadius = '5px';
-        passwordMessage.style.marginBottom = '10px';
-
-        passwordMessage.appendChild(errorText);
-        showErrors.appendChild(passwordMessage);
-
+    // Comprueba que tenga una mayúscula
+    if(!checkUpperLetters(password)){
         passwordHasErrors = true;
-
+        showTextMessage(MSG_UPPER_LETTERS_ERROR, passwordHasErrors);
     }
 
-    if(quantLowerLetters(password) < 2){
-
-        let passwordMessage = document.createElement('p');
-        let errorText = document.createTextNode('La contraseña tiene que tener al menos dos minúsculas.');
-
-        passwordMessage.style.color = '#fff';
-        passwordMessage.style.backgroundColor = '#dc3545';
-        passwordMessage.style.padding = '10px';
-        passwordMessage.style.borderRadius = '5px';
-        passwordMessage.style.marginBottom = '10px';
-
-        passwordMessage.appendChild(errorText);
-        showErrors.appendChild(passwordMessage);
-
+    // Comprueba que tenga dos minúsculas
+    if(!checkLowerLetters(password)){
         passwordHasErrors = true;
+        showTextMessage(MSG_LOWER_LETTERS_ERROR, passwordHasErrors);
     }
 
-    if(quantDigits(password) < 1){
-
-        let passwordMessage = document.createElement('p');
-        let errorText = document.createTextNode('La contraseña tiene que tener al menos un dígito.');
-
-        passwordMessage.style.color = '#fff';
-        passwordMessage.style.backgroundColor = '#dc3545';
-        passwordMessage.style.padding = '10px';
-        passwordMessage.style.borderRadius = '5px';
-        passwordMessage.style.marginBottom = '10px';
-
-        passwordMessage.appendChild(errorText);
-        showErrors.appendChild(passwordMessage);
-
+    // Comprueba que tenga un dígito
+    if(!checkDigits(password)){
         passwordHasErrors = true;
-
+        showTextMessage(MSG_DIGITS_ERROR, passwordHasErrors);
     }
 
+    // Comprueba que tenga tres carácteres iguales seguidos
     if(threeConsecutiveLetters(password)){
-
-        let passwordMessage = document.createElement('p');
-        let errorText = document.createTextNode('La contraseña no puede tener tres o más carácteres iguales seguidos');
-
-        passwordMessage.style.color = '#fff';
-        passwordMessage.style.backgroundColor = '#dc3545';
-        passwordMessage.style.padding = '10px';
-        passwordMessage.style.borderRadius = '5px';
-        passwordMessage.style.marginBottom = '10px';
-
-        passwordMessage.appendChild(errorText);
-        showErrors.appendChild(passwordMessage);
-
         passwordHasErrors = true;
-
+        showTextMessage(MSG_THREE_CONSECUTIVE_CHARS_ERROR, passwordHasErrors);
     }
 
+    // Comprueba que no contenga espacios
     if(containsSpaces(password)){
-
-        let passwordMessage = document.createElement('p');
-        let errorText = document.createTextNode('La contraseña no puede tener espacios en blanco');
-
-        passwordMessage.style.color = '#fff';
-        passwordMessage.style.backgroundColor = '#dc3545';
-        passwordMessage.style.padding = '10px';
-        passwordMessage.style.borderRadius = '5px';
-        passwordMessage.style.marginBottom = '10px';
-
-        passwordMessage.appendChild(errorText);
-        showErrors.appendChild(passwordMessage);
-
         passwordHasErrors = true;
-
+        showTextMessage(MSG_BLANK_SPACES_ERROR, passwordHasErrors);
     }
 
-    if(quantSpecialCharacters(password) < 1){
-
-        let passwordMessage = document.createElement('p');
-        let errorText = document.createTextNode('La contraseña tiene que tener al menos un carácter especial');
-
-        passwordMessage.style.color = '#fff';
-        passwordMessage.style.backgroundColor = '#dc3545';
-        passwordMessage.style.padding = '10px';
-        passwordMessage.style.borderRadius = '5px';
-        passwordMessage.style.marginBottom = '10px';
-
-        passwordMessage.appendChild(errorText);
-        showErrors.appendChild(passwordMessage);
-
+    // Comprueba que tenga un carácter especial 
+    if(!checkSpecialChars(password)){
         passwordHasErrors = true;
-
+        showTextMessage(MSG_SPECIAL_CHARS_ERROR, passwordHasErrors);
     }
 
+
+    // -- MENSAJE DE OK --
     if(!passwordHasErrors){
-
-        // Muestra que la contraseña es válida
-        let passwordMessage = document.createElement('p');
-        let passwordOK = document.createTextNode('La contraseña es válida.');
-        
-        passwordMessage.style.color = '#28a745';
-        passwordMessage.style.backgroundColor = '#d4edda';
-        passwordMessage.style.padding = '10px';
-        passwordMessage.style.borderRadius = '5px';
-        passwordMessage.style.marginBottom = '10px';
-        
-        passwordMessage.appendChild(passwordOK);
-        showErrors.appendChild(passwordMessage);
-
+        showTextMessage(MSG_SUCCESS, passwordHasErrors);
     }
 
 }
 
 
-// Comprueba que una cadena tenga entre 8 y 20 carácteres
+// Muestra el texto que se introduce en textMessage y cambia el estilo dependiendo de si es un mensaje de error o no
 
+function showTextMessage(textMessage, passwordHasErrors){
+
+    let showMessages = document.getElementById("showMessages");
+    let passwordMessage = document.createElement('p');
+    let errorText = document.createTextNode(textMessage);
+
+    if(passwordHasErrors) passwordMessage.className = 'errorMessage';
+    else passwordMessage.className = 'successMessage';
+    
+
+    passwordMessage.appendChild(errorText);
+    showMessages.appendChild(passwordMessage);
+
+}
+
+// Comprueba que una cadena tenga entre 8 y 20 carácteres
 function checkLength(stringLength){
-    return (stringLength >= 8 && stringLength <= 20);
+    return (stringLength >= MIN_CHARS && stringLength <= MAX_CHARS);
+}
+
+// Comprueba que la cadena tenga al menos una mayúsculas
+function checkUpperLetters(password){
+    return quantUpperLetters(password) >= MIN_UPPER_LETTERS;
+}
+
+// Comprueba que la cadena tenga al menos dos minúsculas
+function checkLowerLetters(password){
+    return quantLowerLetters(password) >= MIN_LOWER_LETTERS;
+}
+
+// Comprueba que la cadena tenga al menos un dígito
+function checkDigits(password){
+    return quantDigits(password) >= MIN_DIGITS;
+}
+
+// Comprueba que la cadena tenga al menos un carácter especial
+function checkSpecialChars(password){
+    return quantSpecialCharacters(password) >= MIN_SPECIAL_CHARS;
+}
+
+// Comprueba si la cadena contiene espacios
+
+function containsSpaces(password){
+    return password.includes(" ");
 }
 
 // Comprueba el número de mayúsculas que tiene una cadena
 
 function quantUpperLetters(password){
 
-    let upperLetters = 0;
+    let upperLettersCount = 0;
 
     for(let i = 0; i < password.length; i++){
-
-        if(password[i] == password[i].toUpperCase()){
-            upperLetters++;
+        if(UPPER_LETTERS.includes(password[i])){
+            upperLettersCount++;
         }
-
     }
 
-    return upperLetters;
-
+    return upperLettersCount;
 }
+
 
 // Comprueba el número de minúsculas que tiene una cadena
 
 function quantLowerLetters(password){
     
-        let lowerLetters = 0;
-    
+        let lowerLettersCount = 0;
+        
         for(let i = 0; i < password.length; i++){
     
-            if(password[i] == password[i].toLowerCase()){
-                lowerLetters++;
+            if(LOWER_LETTERS.includes(password[i])){
+                lowerLettersCount++;
             }
-    
         }
-    
-        return lowerLetters;
-    
+        return lowerLettersCount;
 }
 
 // Comprueba el número de dígitos que tiene una cadena
@@ -215,11 +166,10 @@ function quantLowerLetters(password){
 function quantDigits(password){
 
     let digits = 0;
-    let numbers = "0123456789";
 
     for(let i = 0; i < password.length; i++){
 
-        if(numbers.includes(password[i])){
+        if(STRING_DIGITS.includes(password[i])){
             digits++;
         }
 
@@ -244,14 +194,6 @@ function threeConsecutiveLetters(password){
     return false;
 }
 
-// Comprueba si la cadena contiene espacios
-
-function containsSpaces(password){
-
-    return password.includes(" ");
-
-}
-
 // Comprueba cuantos carácteres especiales tiene la cadena
 
 function quantSpecialCharacters(password){
@@ -260,16 +202,15 @@ function quantSpecialCharacters(password){
     let specialCharacters = "!@#$%^&*()-+";
 
     for(let i = 0; i < password.length; i++){
-
         if(specialCharacters.includes(password[i])){
             specialCharactersCount++;
         }
-
     }
 
     return specialCharactersCount;
-
 }
+
+
 
 
 // Esta parte del código es adicional, implementa la opción de ocultar o mostrar la contraseña y está hecha mediante chatgpt (aunque entiendo lo que hace y la he modificado)
