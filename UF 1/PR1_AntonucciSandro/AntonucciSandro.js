@@ -11,8 +11,9 @@ const MSG_SUCCESS = 'La contraseña es válida';
 const UPPER_LETTERS = 'ABCDEFGHIJKLMNÑOPQRSTUVWXYZ';
 const LOWER_LETTERS = 'abcdefghijklmnñopqrstuvwxyz';
 const STRING_DIGITS = '0123456789'
+const SPECIAL_CHARS = '!@#$%^&*()-+';
 
-const MIN_CHARS = 8, MAX_CHARS = 20, MIN_UPPER_LETTERS = 1, MIN_LOWER_LETTERS = 2, MIN_DIGITS = 1, MIN_SPECIAL_CHARS = 1;
+const MIN_CHARS = 8, MAX_CHARS = 20, MIN_UPPER_LETTERS = 1, MIN_LOWER_LETTERS = 2, MIN_DIGITS = 1, MIN_SPECIAL_CHARS = 1, ZERO = 0, ONE = 1, TWO = 2;
 
 // La función init detecta cuando se ha apretado el botón para comprobar que la contraseña sea correcta
 function init(){
@@ -134,9 +135,9 @@ function containsSpaces(password){
 
 function quantUpperLetters(password){
 
-    let upperLettersCount = 0;
+    let upperLettersCount = ZERO;
 
-    for(let i = 0; i < password.length; i++){
+    for(let i = ZERO; i < password.length; i++){
         if(UPPER_LETTERS.includes(password[i])){
             upperLettersCount++;
         }
@@ -150,9 +151,9 @@ function quantUpperLetters(password){
 
 function quantLowerLetters(password){
     
-        let lowerLettersCount = 0;
+        let lowerLettersCount = ZERO;
         
-        for(let i = 0; i < password.length; i++){
+        for(let i = ZERO; i < password.length; i++){
     
             if(LOWER_LETTERS.includes(password[i])){
                 lowerLettersCount++;
@@ -165,9 +166,9 @@ function quantLowerLetters(password){
 
 function quantDigits(password){
 
-    let digits = 0;
+    let digits = ZERO;
 
-    for(let i = 0; i < password.length; i++){
+    for(let i = ZERO; i < password.length; i++){
 
         if(STRING_DIGITS.includes(password[i])){
             digits++;
@@ -183,9 +184,9 @@ function quantDigits(password){
 
 function threeConsecutiveLetters(password){
 
-    for(let i = 0; i < password.length-2; i++){
+    for(let i = ZERO; i < password.length-TWO; i++){
 
-        if(password[i] == password[i + 1] && password[i] == password[i + 2]){
+        if(password[i] == password[i + ONE] && password[i] == password[i + TWO]){
             return true;
         }
 
@@ -198,19 +199,16 @@ function threeConsecutiveLetters(password){
 
 function quantSpecialCharacters(password){
 
-    let specialCharactersCount = 0;
-    let specialCharacters = "!@#$%^&*()-+";
+    let specialCharactersCount = ZERO;
 
     for(let i = 0; i < password.length; i++){
-        if(specialCharacters.includes(password[i])){
+        if(SPECIAL_CHARS.includes(password[i])){
             specialCharactersCount++;
         }
     }
 
     return specialCharactersCount;
 }
-
-
 
 
 // Esta parte del código es adicional, implementa la opción de ocultar o mostrar la contraseña y está hecha mediante chatgpt (aunque entiendo lo que hace y la he modificado)
