@@ -43,20 +43,6 @@ function manufacture(gifts, materials) {
 }
 
 function findNaughtyStep(original, modified) {
-  
-    for(let i in modified){
-
-        if(original[i] !== modified[i]){
-            return modified[i];
-        }
-
-    }
-
-    return '';
-    
-}
-
-function findNaughtyStep(original, modified) {
     
     if(original.length > modified.length){
       for(let i in original){

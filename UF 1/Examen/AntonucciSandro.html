@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DAMv1M07UF1 - Ex01</title>
+    <style>
+        * {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 10px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+        }
+
+        .code,
+        .result {
+            font-family: 'Courier New', Courier, monospace;
+            color: grey;
+        }
+
+        .result {
+            color: blue;
+        }
+
+        article {
+            border: 1px solid grey;
+            margin: 5px;
+            padding: 2px;
+        }
+
+        .importante {
+            color: red;
+        }
+
+        .puntuacion {
+            font-style: italic;
+
+        }
+    </style>
+</head>
+
+<body onload="init()">
+    <h1>DAMv Examen de JavaScript</h1>
+    <h2>DAMv1M07-UF1 2023-24</h2>
+    <article>
+        <h2> Entrega</h2>
+        <p>Cambia el nombre de este fichero a <span class="importante">ApellidoNombre.html</span>, solo entrega este
+            fichero, sin comprimir.</p>
+    </article>
+    <article>
+        <h2> Problema 0:</h2>
+        <p>Los resultados de todos los ejercicios deben verse en esta página web, debajo del titutlo "Resultado" de cada
+            ejercicio. Haz el procedimiento que permita añadir el resultado de cada problema en el articulo que toca
+            <span class="result">(usa la clase result para que se diferencie del resto) </span>. En caso de no
+            visualizarse los resultados en la página se restará 0,25 en cada ejercicio que no se vea.
+        </p>
+        <p>Si usas <b>console.log</b> para mostrar los resutlados que sea claro lo qeue stás mostrando.</p>
+    </article>
+    <article id="problema1">
+        <h2>Problema 1 <span class="puntuacion"> 2 puntos </span></h2>
+
+        <p>
+            Crea una función que recibiendo una cadena de caracteres y un número, retorna una cadena dónde cada caracter
+            está repetido el número de veces indicado.
+        </p>
+        <p>Verifica que la longitud de la cadena de entrada es mayor que el número de repeticiones y menor que 40 de
+            longitud.</p>
+
+        <ul>
+            <li class="code">
+
+                repeatChr("alex", 3) ➞ "aaallleeexxx"</li>
+
+            <li class="code">
+                repeatChr("ITB", 5) ➞ "cadena inválida"</li>
+            <li class="code">repeatChr("bob", 2) ➞ "bboobb"</li>
+        </ul>
+        <h4>Resultado</h4>
+
+    </article>
+    <article id="problema2">
+        <h2>Problema 2 <span class="puntuacion"> 3 puntos </span></h2>
+
+        <p>Partiendo de dos cadenas c1 y c2 deberás hacer una función que devuelva una nueva cadena con
+            los caracteres que no son comunes en estas dos cadenas. La cadena resultado debe salir en el orden inverso y
+            no podeís usar el método reverse.
+
+        </p>
+        <ul>
+            <li class="code">noComunes("xyab","xzca") => "czby"
+
+                <ul>
+                    <li>La segunda cadena tiene 'cz' que no está en la primera cadena.</li>
+                    <li>La primera cadena tiene 'by' que no está en la segunda cadena.</li>
+
+
+                </ul>
+            </li>
+            <br>
+            <li class="code">noComunes("islandia","Lituania") => "utds"</li>
+
+        </ul>
+        </p>
+        <h4>Resultado</h4>
+    </article>
+    <article id="problema3">
+        <h2>Problema 3 <span class="puntuacion"> 3 puntos </span></h2>
+
+        <p>Codifica una función que recibe una cadena de caracteres
+            y debe devolver una cadena que muestre cuántas veces
+            aparece cada vocal en dicha cadena mediante el uso de asteriscos (*).
+        </p>
+        <ul>
+            <li class="code">
+                cuentaLetras("murcielago") => "u:*,i:*,e:*,a:*,o:*,"
+            </li>
+        </ul>
+        <p>
+            Ten en cuenta que la cadena de retorno debe enumerar las letras en el orden de su primera aparición
+            en la cadena original. Y deben contarse de la misma manera mayusculas y minusculas.
+        </p>
+        <ul>
+            <li class="code">
+                cuentaLetras("Hello World") –> e:*,o:**,"
+            </li>
+            <li class="code">
+                cuentaLetras("supErcalifrAgistIcoespIadiloso") –> "u:*,e:**,a:***,i:*****,o:***,"
+            </li>
+        </ul>
+        <h4>Resultado</h4>
+    </article>
+
+
+    <article id="problema4">
+        <h2>Problema 4 <span class="puntuacion"> 2 puntos </span></h2>
+        <p>Escribe una función que calcule el precio del peaje de la Ap7 según el vehiculo que esté pasando.
+            Considerando que 3,20 es el precio base, según el vehiculo habrá que añadir un porcentaje y devolver el
+            precio final redondeado a dos decimales:
+        <ul>
+            <li>Moto: -20%</li>
+            <li>Coche: ​​0%</li>
+            <li>Furgoneta: 8%</li>
+            <li>Camión: 15%</li>
+            <li>Trailer: 33%</li>
+        </ul>
+        <p>En caso de que sea un vehiculo erroneo deberá indicar que es un "Vehiculo no reconocido".</p>
+        <ul>
+            <li class="code">
+                precioPeaje("TRAILER") --> 4.26
+            </li>
+            <li class="code">
+                precioPeaje("moto") --> 2.56
+            </li>
+            <li class="code">
+                precioPeaje("furgo") --> "Vehiculo no reconocido"
+            </li>
+        </ul>
+
+        <h4>Resultado</h4>
+    </article>
+
+
+
+    <script>
+
+        const COCHES_VALIDOS = ["moto", "coche", "furgoneta", "camión", "trailer"];
+        const COCHE_INVALIDO = "Vehiculo no reconocido";
+        const CADENA_INVALIDA = "cadena inválida";
+        const PRECIO_BASE = 3.20, PORCENTAJE_MOTO = 0.80, PORCENTAJE_FURGONETA = 1.08, PORCENTAJE_CAMION = 1.15, PORCENTAJE_TRAILER = 1.33;
+        const CERO = 0, UNO = 1, DOS = 2;
+        const CARACTERES_PERMITIDOS = 40;
+
+        function init(){
+
+            //Ejercicio 1 
+            appendAnswer(1,repeatChr("alex", 3)); //aaallleeexxx
+            appendAnswer(1,repeatChr("ITB", 5)); //cadena inválida
+            appendAnswer(1,repeatChr("bob", 2)); //bboobb
+
+            //Ejercicio 2
+            appendAnswer(2, noComunes("xyab", "xzca")); //czby
+            appendAnswer(2, noComunes("islandia", "Lituania")); //utds
+
+            //Ejercicio 3
+            appendAnswer(3, cuentaVocales("murcielago")); // u:*,i:*,e:*,a:*,o:*
+            appendAnswer(3, cuentaVocales("Hello world")); // e:*,o:**
+            appendAnswer(3, cuentaVocales("supErcalifrAgistIcoespIadiloso")); // u:*,e:**,a:***,i:*****,o:***
+
+            //Ejercicio 4
+            appendAnswer(4, precioPeaje("TRAILER")); // 4.26
+            appendAnswer(4, precioPeaje("moto")); // 2.56
+            appendAnswer(4, precioPeaje("furgo")); // "Vehiculo no reconocido"
+
+        }
+        
+        //Función para añadir los returns a cada problema en el DOM
+        function appendAnswer(problem, answer){
+
+            let numProblema = "#problema" + problem + " h4";
+            let problemaActual = document.querySelector(numProblema);
+
+            let mensaje = document.createElement("p");
+            let solucion = document.createTextNode(answer);
+
+            mensaje.className="result";
+
+            mensaje.appendChild(solucion);
+            problemaActual.appendChild(mensaje);
+
+        }
+        
+
+        //Problema1
+        function repeatChr(cadena, num) {
+            let resultado = "";
+
+            // Se comprueba que la cadena no sea de menor longitud que el número
+            if(cadena.length <= num){
+                return CADENA_INVALIDA;
+            }
+            // Se comprueba que la longitud de la cadena no sea mayor a 40
+            else if(cadena.length > CARACTERES_PERMITIDOS){
+                return CADENA_INVALIDA;
+            }
+            else{
+
+                // Por cada letra, se añade al resultado las veces indicadas
+                for(let i = CERO; i < cadena.length; i++){
+                    for(let j = CERO; j < num; j++){
+                        resultado += cadena[i];
+                    }
+                }
+
+                return resultado;
+            }
+
+        }
+
+        //Problema2
+        function noComunes(c1, c2) {
+
+            let resultado = "";
+            let resultadoInverso = "";
+        
+            // Se comparan los carácteres no comunes de la primera cadena con la segunda
+            for(let char of c1){
+                if(!c2.toLowerCase().includes(char.toLowerCase())) resultado += char;
+            }
+            
+            // Se comparan los carácteres no comunes de la segunda cadena con la primera
+            for(let char of c2){
+                if(!c1.toLowerCase().includes(char.toLowerCase())) resultado += char;
+            }
+
+            // Se invierte el resultado
+            for(let i = resultado.length-UNO; i >= CERO; i--){
+                resultadoInverso += resultado[i];
+            }
+
+            return resultadoInverso;
+
+        }
+
+        //Problema3
+        function cuentaVocales(cadena) {
+
+            let resultado = "";
+            // Las vocales no son constantes ya que se irán quitando en medida que aparecen
+            let vocales = "aeiou";
+            let ordenVocales = [];
+
+            // Ordena las vocales dentro de la lista en el orden en el que aparecen en el texto
+            for(let char of cadena){
+                if(vocales.includes(char.toLowerCase())){
+                    // Añade la vocal a la lista
+                    ordenVocales.push(char.toLowerCase()+":");
+                    // Quita la vocal de las originales
+                    vocales = vocales.replace(char.toLowerCase(), "");
+                } 
+            }
+            
+            vocales = "aeiou";
+
+            // Comprueba que vocales hay y suma un asterisco a la posición de la lista que contenga ese carácter
+            for(let char of cadena){
+                if(vocales.includes(char.toLowerCase())){
+                    for(let i in ordenVocales){
+                        if(ordenVocales[i].startsWith(char.toLowerCase())){
+                            ordenVocales[i] += "*";
+                        }
+                    }
+                }
+            }
+
+            resultado = ordenVocales.join(",");
+
+            return resultado;
+        }
+
+        //Problema4
+        function precioPeaje(vehiculo) {
+
+            if(!COCHES_VALIDOS.includes(vehiculo.toLowerCase())){
+                return "Vehiculo no reconocido";
+            }
+            
+            switch(vehiculo.toLowerCase()){
+
+                case "moto": 
+                    return (PRECIO_BASE*PORCENTAJE_MOTO).toFixed(DOS);
+
+                case "coche":
+                    return (PRECIO_BASE)
+
+                case "furgoneta":
+                    return (PRECIO_BASE*PORCENTAJE_FURGONETA).toFixed(DOS);
+                
+                case "camión":
+                    return (PRECIO_BASE*PORCENTAJE_CAMION).toFixed(DOS);
+
+                case "trailer":
+                    return (PRECIO_BASE*PORCENTAJE_TRAILER).toFixed(DOS);
+            }
+
+        }
+
+
+    </script>
+</body>
+
+</html>
