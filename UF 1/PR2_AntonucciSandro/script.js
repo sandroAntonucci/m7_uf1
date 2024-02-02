@@ -46,6 +46,8 @@ function init() {
     //1. Genera el código random del master
     master = randomColors();
     // console.log(master);
+
+    console.log(master);
     
     //2. Crea todas las filas según el número de intentos.
     generateResult();
